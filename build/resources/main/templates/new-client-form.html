@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <title> &copy; Sko | Best Kicks</title>
+
+</head>
+
+<body>
+
+    <div class="intro">
+        <div class="nav">
+            <div class="logo"><a href="/">
+                    <img src="images/logo2.png" alt="Sko logo">
+                </a></div>
+            <div class="form">
+                <form action="/search-product" method="POST">
+                    <input type="text" placeholder="Pesquisar.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    <a id="advanced" href="/adsearch-form/form">Advanced Search</a>
+                    <a id="login" href="/login"><i class="fa fa-user-circle" aria-hidden="true"></i>Login</a>
+                    <a id="registar" href="/new-client-form"><i class="fa fa-user-plus" aria-hidden="true"></i>Registar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        
+        <div class="login">
+            
+        <div class="alert" th:if="${successMessage}" th:utext="${successMessage}"></div>
+
+        <h1>Criar cliente</h1>
+
+        <form th:action='@{/new-client}' method='post'>
+
+            <input type="text" id="name" name="name" placeholder="Primeiro nome" required/> <br>
+            <input type="text" id="lastname" name="lastname" placeholder="Último nome" required/> <br>    
+            <input type="email" id="email" name="email" placeholder="E-mail" required/> <br>
+            <label class="alert invalid" th:if="${invalidUsername}" th:utext="${invalidUsername}"></label>
+            <input type="text" id="password" name="username" placeholder="UserName" required/> <br>
+            <input type="password" id="password" name="password" placeholder="Password" required/> <br>
+            <input type="submit" value="Registar">
+            <input type=button value="Back" onCLick="history.back()">
+                
+        </form>
+        
+
+    </div>
+
+    </div>
+
+    <hr class="new1">
+
+    <div class="about">
+        <h3><a href="#">About this page</a></h3>
+    </div>
+
+    <p>&nbsp;</p>
+    <p id="copyright">All content copyright &copy; Sko | Best Kicks , Inc. </p>
+
+</body>
+
+</html>

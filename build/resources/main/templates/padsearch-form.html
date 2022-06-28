@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
+  <title> &copy; Sko | Best Kicks</title>
+
+</head>
+
+<body>
+
+  <div class="intro">
+    <div class="nav">
+      <div class="logo"><a href="/home">
+          <img src="images/logo2.png" alt="Sko logo">
+        </a></div>
+      <div class="form">
+          
+        <form th:action='@{/search-product}' method="POST">
+          <input type="text" placeholder="Pesquisar.." id="search" name="search">
+          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <a id="advanced" href="/adsearch-form/form">Advanced Search</a>
+          <a id="login" href="/logout"><i class="fa fa-user-times" aria-hidden="true"></i>Logout</a>
+          <a id="registar" href="/carrinho"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Carrinho</a>
+        </form>
+           <p class="utilizador">Utilizador: <a id="login" href="/usersdash" th:if="${session.userName}" th:utext="${session.userName}" ></a></p>
+      </div>
+    </div>
+  </div>
+    
+  <div class="content">
+
+    <div class="advanced_search">
+      <h2>Pesquisa Avançada</h2>
+      <div class="product">
+        <h3>Encontrar os seus produtos nunca foi tão fácil!</h3>
+        <div class="details">
+            
+            <form th:action='@{/padsearch-form}' method="POST">
+            <p><label for="form-prod-descrip">Descrição do produto:</label></p>
+            <textarea name="description" placeholder="Breve descrição do produto..." id="form-prod-descrip" rows="4"
+              cols="60" maxlength="300"></textarea>
+            <div>
+              <p>Categoria do produto:</p>
+              <div th:each="categories: ${session.categorieList}">
+                <input type="checkbox" th:value="${categories}" th:text="${categories}"/>
+              </div>
+            </div>
+            <p><label> Intervalo de preço (preço mínimo e máximo): <input type="text" name="price" value="10 e 30"
+                  maxlength="24"></label></p>
+            <p><label> Localização do produto - Loja:
+                <select name="location">
+                  <option>Elvas</option>
+                  <option>Évora</option>
+                  <option>Beja</option>
+                  <option>Portalegre</option>
+                  <option>Lisboa</option>
+                  <option>Porto</option>
+                </select></label></p>
+            <p><label> Data em que o produto foi listado na loja pela 1ª vez: <input type="date"
+                  name="first_time"></label></p>
+            <p><label>Data em que o produto deixa de estar disponível para venda: <input type="date"
+                  name="last_time"></label></p>
+            <p><input type="submit" value="Pesquisar"> <input type="reset" value="Reset"></p>
+          </form>
+            
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+  <hr class="new1">
+
+  <div class="about">
+    <h3><a href="#">About this page</a></h3>
+  </div>
+
+  <p>&nbsp;</p>
+  <p id="copyright">All content copyright &copy; Sko | Best Kicks , Inc. </p>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
+  <title> &copy; Sko | Best Kicks</title>
+
+</head>
+
+<body>
+
+  <div class="intro">
+    <div class="nav">
+      <div class="logo"><a href="/home">
+          <img src="images/logo2.png" alt="Sko logo">
+        </a></div>
+      <div class="form">
+          
+        <form th:action='@{/search-product}' method="POST">
+          <input type="text" placeholder="Pesquisar.." id="search" name="search">
+          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <a id="advanced" href="/padsearch-form/form">Advanced Search</a>
+          <a id="login" href="/logout"><i class="fa fa-user-times" aria-hidden="true"></i>Logout</a>
+          <a id="registar" href=""><i class="fa fa-shopping-cart" aria-hidden="true"></i>Carrinho</a>
+        </form>
+           <p class="utilizador">Utilizador: <a id="login" href="/usersdash" th:if="${session.userName}" th:utext="${session.userName}" ></a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="products">
+      <h2>The World's Hottest Sneakers</h2>
+      <p id="catalog">A mostrar 1-5 de 30 resultados</p>
+      
+      <div class="product" th:each="product: ${session.productList}">
+        <h3><a href="single-product-view.html" th:text="${product.productName}"></a></h3>
+        <a  th:href="@{'/single-product/{sku}'(sku=${product.productSku})}"><img class="shoes" th:src="@{${product.productImage}}"
+            alt="nikesb shoes"></a>
+        <p class="shortdescription" th:text="${product.shortDescription}">
+        <div class="details">
+          <p class="sku">Referência: <span class="sku" th:text="${product.productSku}"></span><p>
+          <p class="model">Marca/Modelo: <span class="model" th:text="${product.brandModel}"></span><p>
+          <p class="price">Preço: <span class="price" th:text="${product.price} + &euro;"></span><p>
+          <button class="buy" type="button"><a th:href="@{'/add-cart/{sku}'(sku=${product.productSku})}">Comprar </a></button>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a class="active" href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+      </div>
+
+    </div>
+
+   <div class="categories">
+      <h2>Categorias</h2>
+      <ul>
+        <li th:each="categories: ${session.categorieList}"><a th:text="${categories}">Lifestyle</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <hr class="new1">
+
+  <div class="about">
+    <h3><a href="#">About this page</a></h3>
+  </div>
+
+  <p>&nbsp;</p>
+  <p id="copyright">All content copyright &copy; Sko | Best Kicks , Inc. </p>
+
+</body>
+
+</html>

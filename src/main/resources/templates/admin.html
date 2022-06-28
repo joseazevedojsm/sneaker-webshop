@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
+  <title> &copy; Sko | Best Kicks</title>
+
+</head>
+
+<body>
+
+  <div class="intro">
+    <div class="nav">
+      <div class="logo"><a href="/admin">
+          <img src="images/logo2.png" alt="Sko logo">
+        </a></div>
+      <div class="form">
+          <a href="/logout"><i class="fa fa-user-times" aria-hidden="true"></i>Logout</a>
+          <p class="utilizador">Utilizador: <a id="login" th:if="${session.userName}" th:utext="${session.userName}" ></a></p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    
+    <div class="admin">
+      <h1>Bem-Vindo ao Painel de Administrador!</h1>
+      <ol class="op">
+        <li><a href="/new-product-form">Criar Produtos</a></li>
+         <li><a href="/adminlist">Ver Produtos</a></li>
+        <li><a href="/delete-page">Eliminar Produtos</a></li>
+        <li><a href="/list-orders">Ver Encomendas</a></li>
+      </ol> 
+      
+    </div>
+
+  </div>
+
+  <hr class="new1">
+
+  <div class="about">
+    <h3><a href="#">About this page</a></h3>
+  </div>
+
+  <p>&nbsp;</p>
+  <p id="copyright">All content copyright &copy; Sko | Best Kicks , Inc. </p>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
+  <title> &copy; Sko | Best Kicks</title>
+
+</head>
+
+<body>
+
+  <div class="intro">
+    <div class="nav">
+      <div class="logo"><a href="/">
+          <img src="images/logo2.png" alt="Sko logo">
+        </a></div>
+      <div class="form">
+        <form th:action='@{/search-product}' method="POST">
+          <input type="text" placeholder="Pesquisar.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+          <a id="advanced" href="/adsearch-form/form">Advanced Search</a>
+          <a id="login" href="/login"><i class="fa fa-user-circle" aria-hidden="true"></i>Login</a>
+          <a id="registar" href="/new-client-form"><i class="fa fa-user-plus" aria-hidden="true"></i>Registar</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="detailsP" th:each="product: ${session.singleP}">
+      <h2 th:text="${product.productName}"></h2>
+      <div class="product">
+        <h3>Descrição</h3>
+        <a th:src="@{${product.productImage}}"><img class="imgdet" th:src="@{${product.productImage}}" alt="nikesb shoes"></a>
+        <p class="shortdescription" th:text="${product.shortDescription}"></p>
+        <div class="details">
+          <p class="sku">Referência: <span class="sku" th:text="${product.productSku}"></span><p>
+          <p class="model">Marca/Modelo: <span class="model" th:text="${product.brandModel}"></span><p>
+          <p class="price">Preço: <span class="price" th:text="${product.price} + &euro;"></span><p>
+          <p class="shipping"><b>Custos de Envio:</b> 4,5&euro;</p>
+          <p class="delivery"><b>Data de entrega:</b> 12 de fevereiro</p>
+          <div class="payments">
+            <p><b>Métodos de Pagamento Disponiveis:</b></p>
+            <ul>
+              <li>Cartão de Crédito(Visa/MasterCard);</li>
+              <li>Paypal;</li>
+              <li> Transferência Multibanco;</li>
+            </ul>
+            <img class="paymentimg" src="images/pagamentos.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="categories" th:each="product: ${session.singleP}">
+      <h2>Categorias</h2>
+      <ul>
+        <li><a th:text="${product.productCategorie}"></a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <hr class="new1">
+
+  <div class="about">
+    <h3><a href="#">About this page</a></h3>
+  </div>
+
+  <p>&nbsp;</p>
+  <p id="copyright">All content copyright &copy; Sko | Best Kicks , Inc. </p>
+
+</body>
+
+</html>
